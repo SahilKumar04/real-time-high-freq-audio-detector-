@@ -1,0 +1,25 @@
+recObj = audiorecorder;
+while 1
+disp('Start speaking.')
+recordblocking(recObj,5);
+disp('End of Recording.');
+y = getaudiodata(recObj);
+i = 0;
+x=max(y);
+a=min(y);
+disp('x = '+x)
+disp('a = '+a)
+if (x>=0.2)
+    d=50;
+    i = 3;
+    [y, Fs] = audioread('Beep.mp3');
+    sound(y, Fs); 
+end
+if(a <= -0.2)
+    d=0;
+    i=3;
+    [y, Fs] = audioread('Beep.mp3');
+    sound(y, Fs);
+end
+pause(i)
+end
